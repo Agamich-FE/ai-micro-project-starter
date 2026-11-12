@@ -80,9 +80,17 @@ Approve, start step 1
 
 ## Recipe lifecycle in my own words
 
-<Write after reading RESEARCH.md section 1 and the official docs.
-Required by the task: install → config import → config actions → default
-content.>
+When I run drush recipe, Drupal first reads recipe.yml and does a strict check. If the recipe ships a config file that already exists on the site with different values, it stops with an error before changing anything. With strict: false it skips that check.
+
+Then it applies the recipes listed under recipes:, each one fully, in the same order. After that it installs the modules and themes from install:.
+
+Next it creates the config from the recipe’s config/ folder and config.import, but only config that doesn’t exist yet. Existing config is never overwritten.
+
+Then the config actions run, such as createIfNotExists and grantPermissions. They run every time the recipe is applied, so they must be safe to repeat.
+
+Last, it imports the default content from content/. Content whose UUID already exists is skipped, so applying twice doesn’t create duplicates.
+
+I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php in Drupal 11.4, and against the official Recipes docs. The docs leave the re-apply behaviour open, so I tested it myself.
 
 ## Where the AI was wrong or misleading
 

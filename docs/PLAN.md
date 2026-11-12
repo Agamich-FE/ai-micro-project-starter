@@ -88,7 +88,13 @@ A Drupal Recipe plus a small companion module, as in
 Each step is one small commit and is verified before the next step
 starts.
 
-1. [ ] **Add dependencies** agreed above.
+1. [x] **Add dependencies** agreed above. Done 2026-11-12:
+   - pathauto 1.16.0 (+ token 1.18, ctools 4.1)
+   - coder 9.0.1 + `phpcs.xml.dist`
+   - @playwright/test 1.65 + `playwright.config.ts`; a setup test
+     passes against the DDEV site
+
+   Originally:
    `ddev composer require drupal/pathauto`,
    `ddev composer require --dev drupal/coder`, and
    `npm init` + `npm i -D @playwright/test`.

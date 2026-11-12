@@ -39,8 +39,13 @@
   (path is relative to the docroot `web/`)
 - Clear cache: `ddev drush cr`
 - Export config from the prototype: `ddev drush config:export -y`
-- Run tests: `<TBD in plan — recipe apply test + Playwright>`
-- Lint / static analysis: `<TBD — needs drupal/coder, ask before adding>`
+- Run recipe test: `scripts/test-recipe.sh` (added in plan step 9)
+- Run Playwright smoke tests (on the host, not in DDEV):
+  `npm run test:e2e`. First time: `npm ci && npm run test:e2e:install`.
+  Other site: `BASE_URL=https://… npm run test:e2e`.
+- Lint: `ddev exec vendor/bin/phpcs` (uses `phpcs.xml.dist`, which covers
+  `web/modules/custom` with Drupal + DrupalPractice). Auto-fix:
+  `ddev exec vendor/bin/phpcbf`.
 
 ## Coding standards
 

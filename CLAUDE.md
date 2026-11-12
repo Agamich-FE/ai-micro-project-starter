@@ -89,3 +89,15 @@
 - `ddev composer create-project` refuses to run in a non-empty directory;
   the starter files had to be moved out and back in.
 - Composer has no `-y` option (that is a Drush flag).
+- `strict` defaults to TRUE: a config action on config that the same
+  recipe ships as a file makes the second apply fail (tested). Put the
+  final values in the YAML file; use actions only for config the recipe
+  doesn't ship. See docs/RESEARCH.md §4.
+- Default *content* files must keep their UUIDs (file name and `_meta`).
+  The "no UUIDs" rule is for config only.
+- Recipes can't contain code: PHP, Twig and SDC files go in the companion
+  module, installed via `install:`.
+- Export content with `ddev drush content:export node --bundle=event -W
+  --dir=../recipes/ls_events/content` (core exporter, 11.3+; not tried
+  yet, so check where the relative `--dir` path ends up). Don't add
+  the contrib `default_content` module.

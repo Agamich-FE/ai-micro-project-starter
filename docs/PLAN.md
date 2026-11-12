@@ -135,8 +135,8 @@ starts.
    - Accessible markup: `<article>`, heading level, `<time datetime>`,
      image alt from media.
 7. [ ] **Default content:**
-   1. Create 5 events (dates relative to 2026-11, all in the future,
-      except optionally one past event to prove the filter), 3–4
+   1. Create 5 events with dates in 2027–2028 (none in the past, so the
+      upcoming list and the Playwright test keep working), 3–4
       categories and 5 images.
    2. Export them with `drush content:export node --bundle=event -W`
       into `recipes/ls_events/content/`, with file attachments.

@@ -64,6 +64,10 @@ A Drupal Recipe plus a small companion module, as in
 
 ## Decisions I need from you before building
 
+> 2026-11-12: all three recommendations approved by me (Pathauto,
+> Playwright and Coder yes, core-dev no; module in `web/modules/custom`;
+> single daterange field).
+
 1. **Dependencies** (CLAUDE.md says to ask first):
    - `drupal/pathauto` (+ `token`, `ctools`): required by the task. Recommended yes.
    - `@playwright/test` (npm, dev): required by the task. Recommended yes.

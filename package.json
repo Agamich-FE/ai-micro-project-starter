@@ -1,0 +1,14 @@
+{
+  "name": "ls-events",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright smoke tests for the ls_events Drupal recipe.",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install chromium"
+  },
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  }
+}

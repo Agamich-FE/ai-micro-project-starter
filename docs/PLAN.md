@@ -214,4 +214,8 @@ a second recipe `ls_events_registration` that extends `ls_events`.
 
 ## My changes to the agent's plan
 
-- <what you changed and why>
+- Approved pathauto, @playwright/test and drupal/coder; rejected
+  drupal/core-dev — a Drush-scripted test is enough and covers both
+  minimal and standard installs without PHPUnit setup.
+- Sample events use dates in 2027–2028 and none in the past. With
+  "around now" dates the upcoming list (and the Playwright test) would be empty within weeks.

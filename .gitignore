@@ -14,6 +14,16 @@
 /web/sites/*/settings.local.php
 /web/sites/*/settings.ddev.php
 /private/
+/drush/Commands/contrib/
+
+# DDEV config must be shared (overrides a global ignore); generated files
+# are excluded by .ddev/.gitignore.
+!/.ddev/
+
+# Recipes: contrib recipes are installed by Composer; only our own are tracked.
+/recipes/*
+!/recipes/README.txt
+!/recipes/ls_events/
 
 # Node / build
 node_modules/

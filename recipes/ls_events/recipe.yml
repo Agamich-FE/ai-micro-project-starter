@@ -1,0 +1,70 @@
+name: 'Events'
+description: 'Adds an Event content type with categories, an Event editor role, an upcoming events page, a "Next 3 events" block and URL aliases.'
+type: 'Content type'
+recipes:
+  # Provides media.type.image, used by field_event_image.
+  - core/recipes/image_media_type
+  # Provides the basic_html text format and its editor, used by body.
+  - core/recipes/basic_html_format_editor
+install:
+  - block
+  - datetime
+  - datetime_range
+  - media_library
+  - node
+  - path
+  - pathauto
+  - taxonomy
+  - text
+  - views
+  # ls_events_ui (Event card component and templates) is added in plan
+  # step 6, once the module exists.
+config:
+  # Only our own field storages are checked strictly: they define database
+  # tables. Every other shipped file is skipped if it already exists.
+  # field.storage.node.body is shared with core's page/article recipes, so
+  # it is not strict.
+  strict:
+    - field.storage.node.field_event_category
+    - field.storage.node.field_event_date
+    - field.storage.node.field_event_image
+    - field.storage.node.field_event_location
+  actions:
+    # The role is created by actions, not shipped as a file, so applying the
+    # recipe again (or on a site that already has the role) just re-grants.
+    user.role.event_editor:
+      createIfNotExists:
+        label: 'Event editor'
+      grantPermissions:
+        - 'access content overview'
+        - 'access media overview'
+        # Needs the Navigation module (standard has it). On a site without
+        # it, Drupal drops this permission and logs an error; that is
+        # accepted (decided 2026-11-19, see docs/PLAN.md step 4).
+        - 'access navigation'
+        - 'create event content'
+        - 'create image media'
+        - 'delete any event content'
+        - 'delete own event content'
+        - 'edit any event content'
+        - 'edit own event content'
+        - 'use text format basic_html'
+        - 'view own unpublished content'
+        - 'view the administration theme'
+    # Placed in whatever theme is the default when the recipe is applied.
+    # An existing block with this ID is left unchanged.
+    block.block.ls_events_next_3:
+      placeBlockInDefaultTheme:
+        plugin: 'views_block:ls_events-next_3'
+        settings:
+          id: 'views_block:ls_events-next_3'
+          label: ''
+          label_display: visible
+          provider: views
+          views_label: ''
+          items_per_page: null
+        region:
+          olivero: sidebar
+          stark: sidebar_first
+        default_region: content
+        position: last

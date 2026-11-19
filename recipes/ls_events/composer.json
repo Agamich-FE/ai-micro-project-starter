@@ -1,0 +1,10 @@
+{
+    "name": "custom/ls_events",
+    "type": "drupal-recipe",
+    "description": "Adds a complete Events feature: content type, categories, editor role, upcoming events page and block, URL aliases and sample content.",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/core": "^11.4",
+        "drupal/pathauto": "^1.16"
+    }
+}

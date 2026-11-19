@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 41237217-788e-4557-9bd2-9a41544643ec
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: a11y-workshop.jpg
+  uri:
+    -
+      value: 'public://events/a11y-workshop.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 22788
+  status:
+    -
+      value: true

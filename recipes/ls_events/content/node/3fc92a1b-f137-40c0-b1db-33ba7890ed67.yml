@@ -1,0 +1,49 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3fc92a1b-f137-40c0-b1db-33ba7890ed67
+  bundle: event
+  default_langcode: en
+  depends:
+    5f1724ba-89f0-4529-af09-1f556a7062b9: taxonomy_term
+    9501a6f6-303b-45d8-a8ae-86ebd7e5db61: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Site Building with Recipes Webinar'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  field_event_category:
+    -
+      entity: 5f1724ba-89f0-4529-af09-1f556a7062b9
+  field_event_date:
+    -
+      value: '2028-01-20T13:00:00'
+      end_value: '2028-01-20T14:30:00'
+  field_event_image:
+    -
+      entity: 9501a6f6-303b-45d8-a8ae-86ebd7e5db61
+  field_event_location:
+    -
+      value: Online
+  body:
+    -
+      value: '<p>A 90-minute online session showing how to apply, combine and test Drupal recipes on a fresh site.</p>'
+      format: basic_html
+      summary: ''

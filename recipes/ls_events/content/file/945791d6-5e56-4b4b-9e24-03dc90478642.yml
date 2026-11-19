@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 945791d6-5e56-4b4b-9e24-03dc90478642
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: recipes-webinar.jpg
+  uri:
+    -
+      value: 'public://events/recipes-webinar.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 22843
+  status:
+    -
+      value: true

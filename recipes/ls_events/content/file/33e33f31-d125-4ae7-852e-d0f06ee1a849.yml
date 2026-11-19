@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 33e33f31-d125-4ae7-852e-d0f06ee1a849
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: performance-summit.jpg
+  uri:
+    -
+      value: 'public://events/performance-summit.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 22276
+  status:
+    -
+      value: true

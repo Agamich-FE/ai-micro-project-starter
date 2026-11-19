@@ -1,0 +1,49 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 67c929c6-6703-4972-b701-7207395441cd
+  bundle: event
+  default_langcode: en
+  depends:
+    c99f55c6-bc08-4d71-b709-d97c65f2d595: taxonomy_term
+    07a61bdf-f935-4b64-89e5-c9d543b44e8b: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Web Performance Summit 2028'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  field_event_category:
+    -
+      entity: c99f55c6-bc08-4d71-b709-d97c65f2d595
+  field_event_date:
+    -
+      value: '2028-05-11T07:00:00'
+      end_value: '2028-05-12T15:00:00'
+  field_event_image:
+    -
+      entity: 07a61bdf-f935-4b64-89e5-c9d543b44e8b
+  field_event_location:
+    -
+      value: 'Kraków, Poland'
+  body:
+    -
+      value: '<p>Talks and case studies on making sites fast: caching, images, Core Web Vitals and measuring what matters.</p>'
+      format: basic_html
+      summary: ''

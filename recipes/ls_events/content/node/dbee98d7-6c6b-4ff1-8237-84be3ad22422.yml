@@ -1,0 +1,49 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: dbee98d7-6c6b-4ff1-8237-84be3ad22422
+  bundle: event
+  default_langcode: en
+  depends:
+    36f4fc46-3653-4e68-aa81-bedb1d048ce5: taxonomy_term
+    638d3458-20e3-485c-bc70-c254c370db3f: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Open Source Community Meetup'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  field_event_category:
+    -
+      entity: 36f4fc46-3653-4e68-aa81-bedb1d048ce5
+  field_event_date:
+    -
+      value: '2027-09-23T15:00:00'
+      end_value: '2027-09-23T18:00:00'
+  field_event_image:
+    -
+      entity: 638d3458-20e3-485c-bc70-c254c370db3f
+  field_event_location:
+    -
+      value: 'Lviv, Ukraine'
+  body:
+    -
+      value: '<p>An evening of short talks and conversation for people who contribute to open source projects, or want to start.</p>'
+      format: basic_html
+      summary: ''

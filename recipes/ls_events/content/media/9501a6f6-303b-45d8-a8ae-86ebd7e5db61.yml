@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 9501a6f6-303b-45d8-a8ae-86ebd7e5db61
+  bundle: image
+  default_langcode: en
+  depends:
+    945791d6-5e56-4b4b-9e24-03dc90478642: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'Site Building with Recipes Webinar'
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Abstract purple-to-red banner with soft circles'
+      title: ''
+      width: 1200
+      height: 675
+      entity: 945791d6-5e56-4b4b-9e24-03dc90478642

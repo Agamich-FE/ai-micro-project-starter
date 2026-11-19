@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 41e28dd5-14a2-4e05-93cc-7ba90a52816a
+  bundle: image
+  default_langcode: en
+  depends:
+    ef5d585d-93c6-4eab-a4dd-a23b8df84c84: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'Drupal Recipes Conference 2027'
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Abstract blue-to-purple banner with soft circles'
+      title: ''
+      width: 1200
+      height: 675
+      entity: ef5d585d-93c6-4eab-a4dd-a23b8df84c84

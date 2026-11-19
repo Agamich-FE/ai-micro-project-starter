@@ -1,0 +1,49 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 452e6946-94b6-4185-8241-179f70c473df
+  bundle: event
+  default_langcode: en
+  depends:
+    b863c3a0-f942-4611-a1d2-238e6f41cd4d: taxonomy_term
+    14bc9ec6-f345-43a5-bd3c-dfcf83f48ba1: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Accessible Front-End Workshop'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  field_event_category:
+    -
+      entity: b863c3a0-f942-4611-a1d2-238e6f41cd4d
+  field_event_date:
+    -
+      value: '2027-06-10T07:00:00'
+      end_value: '2027-06-10T13:00:00'
+  field_event_image:
+    -
+      entity: 14bc9ec6-f345-43a5-bd3c-dfcf83f48ba1
+  field_event_location:
+    -
+      value: 'Kyiv, Ukraine'
+  body:
+    -
+      value: '<p>A practical workshop on building components that meet WCAG 2.2 AA: headings, focus styles, colour contrast and screen reader testing.</p>'
+      format: basic_html
+      summary: ''

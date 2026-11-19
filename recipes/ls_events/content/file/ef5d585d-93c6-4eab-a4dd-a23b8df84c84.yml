@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: ef5d585d-93c6-4eab-a4dd-a23b8df84c84
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: recipes-conference.jpg
+  uri:
+    -
+      value: 'public://events/recipes-conference.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 22365
+  status:
+    -
+      value: true

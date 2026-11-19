@@ -129,6 +129,9 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 | 9 | First version of the view put site-specific role names (`content_editor`, `administrator`) in the category filter settings | Agent's own review of the view config | Removed them and re-imported the view |
 | 10 | In a new session the agent said step 2 had not started, because it read only git and the docs; the prototype was in the database, uncommitted | Starting step 2, it found `event`, `ls_events` etc. already on the site | Read the 13 Nov session transcript and the site log, re-checked the prototype instead of rebuilding it. Lesson: record DB-only work in the docs in the same session |
 | 11 | Wrote in PLAN step 2 that granting `access navigation` "fails on minimal", without checking the code | Step 4: reading `Role::calculateDependencies()` before writing the action | It drops unknown permissions and logs an error instead; confirmed by applying on minimal (2 logged errors, exit 0). Corrected PLAN step 2 |
+| 12 | Plan step 6 said `hook_theme` suggestions only "if templates aren't picked up automatically" | Checked how core modules ship node/media suggestion templates | Module templates are only found when registered; added `#[Hook('theme')]` with `base hook` |
+| 13 | First CSS draft switched the accent colour on `prefers-color-scheme: dark` | Own review: Olivero and Stark stay light in OS dark mode | The light-blue accent would fail contrast on white; removed the dark-mode block |
+| 14 | Set a teaser label to `visually_hidden` before confirming the option exists | First grep found nothing | Found it in `FieldLabelOptionsTrait.php:21`, kept the change |
 
 ## Manual work
 

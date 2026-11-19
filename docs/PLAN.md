@@ -179,7 +179,29 @@ starts.
    Original text: Fresh `site:install minimal`, apply, apply
    again. Then the same with `standard`, which already has `tags` and
    `content_editor`. Fix and log every import error in AI_LOG.
-6. [ ] **Companion module `ls_events_ui`:**
+6. [x] **Companion module `ls_events_ui`.** Done 2026-11-19:
+   - `hook_theme` *is* needed: module templates for node suggestions are
+     only found when registered with `'base hook' => 'node'` (OOP
+     `#[Hook('theme')]` in `src/Hook/`, as in `MediaLibraryThemeHooks`)
+   - the component takes `variant`, `url`, `heading_level` props and
+     `title`, `media`, `date`, `location`, `category`, `content`,
+     `contextual_links` slots; empty slots are hidden with CSS `:empty`
+     so the template never renders a field twice to test it
+   - the full template leaves out the title on the node's own page (the
+     page title block is the `h1`)
+   - teaser display: Location and Category labels changed from `hidden`
+     to `visually_hidden` (core option, `FieldLabelOptionsTrait`), so
+     screen readers hear "Location: Lviv"
+   - `ls_events_ui` added to the recipe's `install:`; applies twice on
+     minimal and standard; markup checked with a test event (article,
+     linked h2, `<time datetime>`, media alt); CSS present in the
+     aggregate; PHPCS clean
+   - not checked visually: the Claude browser pane blocks the site's
+     assets. Step 10 (Playwright) can take screenshots.
+   - open point: in the "Next 3" sidebar block the cards use `h2` under
+     the block's own `h2` title
+
+   Original text:
    - `.info.yml` (core ^11)
    - `components/event-card/` (`event-card.component.yml` with a props
      schema, `.twig`, `.css`)

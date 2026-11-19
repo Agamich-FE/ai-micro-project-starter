@@ -46,7 +46,7 @@
   `npm run test:e2e`. First time: `npm ci && npm run test:e2e:install`.
   Other site: `BASE_URL=https://… npm run test:e2e`.
 - Lint: `ddev exec vendor/bin/phpcs` (uses `phpcs.xml.dist`, which covers
-  `web/modules/custom` with Drupal + DrupalPractice). Auto-fix:
+  `web/modules/custom` and `scripts/` with Drupal + DrupalPractice). Auto-fix:
   `ddev exec vendor/bin/phpcbf`.
 
 ## Coding standards

@@ -305,7 +305,14 @@ starts.
     - an event's alias URL opens the full view
 
     `playwright.config.ts` sets `ignoreHTTPSErrors` for DDEV's local CA.
-11. [ ] **Lint:** PHPCS (Drupal, DrupalPractice) on the module, clean.
+11. [x] **Lint.** Done 2026-11-19: the module was already clean (3
+    files). Linting `scripts/recipe-assertions.php` found 1 error (doc
+    comment without a full stop), fixed by hand. `phpcs.xml.dist` now
+    also covers `scripts/`; `ddev exec vendor/bin/phpcs` → 5 files,
+    exit 0. Twig, CSS and TypeScript aren't covered by PHPCS (no linter
+    added: that would be a new dependency).
+
+    Original text: **Lint:** PHPCS (Drupal, DrupalPractice) on the module, clean.
 12. [ ] **Docs:**
     - README install/run in under 5 minutes, timed on a fresh clone
     - AI_LOG

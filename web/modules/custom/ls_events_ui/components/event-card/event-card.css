@@ -1,0 +1,91 @@
+/**
+ * @file
+ * Event card component styles.
+ *
+ * Colours inherit from the theme; only spacing, layout and the accent are
+ * set here. Override the custom properties in a theme to restyle.
+ */
+.event-card {
+  --event-card-gap: 1rem;
+  --event-card-radius: 0.5rem;
+  --event-card-border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  --event-card-accent: #1a5fb4;
+
+  display: grid;
+  gap: var(--event-card-gap);
+  margin-block-end: 2rem;
+}
+
+.event-card--teaser {
+  overflow: hidden;
+  padding-block-end: var(--event-card-gap);
+  border: var(--event-card-border);
+  border-radius: var(--event-card-radius);
+}
+
+.event-card--teaser .event-card__body {
+  padding-inline: var(--event-card-gap);
+}
+
+.event-card__body {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Empty slots render empty wrappers; hide them. */
+.event-card__media:empty,
+.event-card__date:empty,
+.event-card__location:empty,
+.event-card__category:empty,
+.event-card__content:empty {
+  display: none;
+}
+
+.event-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.event-card--teaser .event-card__media img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.event-card__title {
+  margin: 0;
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+
+.event-card__link {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.event-card__link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.event-card__link:focus-visible {
+  outline: 3px solid var(--event-card-accent);
+  outline-offset: 2px;
+}
+
+.event-card__date {
+  font-weight: 700;
+  color: var(--event-card-accent);
+}
+
+.event-card__category {
+  justify-self: start;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--event-card-accent);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+}
+
+.event-card__content > :first-child {
+  margin-block-start: 0;
+}

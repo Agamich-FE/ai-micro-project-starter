@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Event card component.
+ *
+ * Empty slots leave empty wrappers, which the CSS hides with :empty, so the
+ * template doesn't render a slot twice to test it.
+ */
+#}
+{% set heading = 'h' ~ heading_level|default(2) %}
+<article{{ attributes.addClass('event-card', 'event-card--' ~ variant|default('teaser')) }}>
+  {{- contextual_links -}}
+  <div class="event-card__media">{{- media -}}</div>
+  <div class="event-card__body">
+    {% if title %}
+      <{{ heading }} class="event-card__title">
+        {%- if url -%}
+          <a class="event-card__link" href="{{ url }}" rel="bookmark">{{ title }}</a>
+        {%- else -%}
+          {{ title }}
+        {%- endif -%}
+      </{{ heading }}>
+    {% endif %}
+    <div class="event-card__date">{{- date -}}</div>
+    <div class="event-card__location">{{- location -}}</div>
+    <div class="event-card__category">{{- category -}}</div>
+    <div class="event-card__content">{{- content -}}</div>
+  </div>
+</article>

@@ -1,0 +1,7 @@
+name: 'Events UI'
+type: module
+description: 'Event card component and teaser/full templates for the ls_events recipe.'
+package: Custom
+core_version_requirement: ^11
+dependencies:
+  - drupal:node

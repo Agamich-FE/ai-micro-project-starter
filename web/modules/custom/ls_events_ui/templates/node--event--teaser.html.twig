@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Event teaser, rendered with the event-card component.
+ *
+ * Cache metadata stays on the node render array; the fields bubble theirs.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+{{ include('ls_events_ui:event-card', {
+  attributes: attributes,
+  variant: 'teaser',
+  url: url,
+  heading_level: 2,
+  title: label,
+  contextual_links: [title_prefix, title_suffix],
+  media: content.field_event_image,
+  date: content.field_event_date,
+  location: content.field_event_location,
+  category: content.field_event_category,
+  content: content|without('field_event_image', 'field_event_date', 'field_event_location', 'field_event_category'),
+}, with_context = false) }}

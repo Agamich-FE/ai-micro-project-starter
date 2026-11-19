@@ -1,0 +1,53 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Event card
+status: stable
+description: 'An event with its image, title, date, location, category and text. Used for the event teaser and full view modes.'
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: 'Wrapper attributes, usually the node attributes.'
+    variant:
+      type: string
+      title: Variant
+      enum:
+        - teaser
+        - full
+      meta:enum:
+        teaser: Teaser
+        full: Full
+      default: teaser
+    url:
+      type: string
+      title: URL
+      description: 'Link for the title. Leave empty to show the title without a link.'
+    heading_level:
+      type: integer
+      title: Heading level
+      enum:
+        - 2
+        - 3
+        - 4
+      default: 2
+slots:
+  title:
+    title: Title
+    description: 'The event title. Leave empty when the page title already shows it.'
+  contextual_links:
+    title: Contextual links
+    description: 'The node title_prefix and title_suffix, so contextual links keep working.'
+  media:
+    title: Media
+    description: 'The rendered event image.'
+  date:
+    title: Date
+    description: 'The rendered date range, with time elements.'
+  location:
+    title: Location
+  category:
+    title: Category
+  content:
+    title: Content
+    description: 'The body and any other fields.'

@@ -4,8 +4,8 @@
  * @file
  * Assertions for the ls_events recipe, run by scripts/test-recipe.sh.
  *
- * Run inside the site with:
- *   ddev drush php:script ../scripts/recipe-assertions.php
+ * Run inside the site with
+ * "ddev drush php:script ../scripts/recipe-assertions.php".
  *
  * Prints "ok - ..." for each passing check and throws on the first failure,
  * so drush exits non-zero.

@@ -14,6 +14,14 @@
   display: grid;
   gap: var(--event-card-gap);
   margin-block-end: 2rem;
+  container: event-card / inline-size;
+}
+
+/* Narrow teasers (e.g. the "Next 3 events" sidebar block) skip the body. */
+@container event-card (width < 22rem) {
+  .event-card--teaser .event-card__content {
+    display: none;
+  }
 }
 
 .event-card--teaser {

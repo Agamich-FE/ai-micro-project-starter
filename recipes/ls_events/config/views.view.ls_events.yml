@@ -290,6 +290,8 @@ display:
         use_more_text: false
         link_display: false
         link_url: false
+        css_class: false
+      css_class: ls-events-next
       use_more: true
       use_more_always: true
       use_more_text: 'All upcoming events'
@@ -499,5 +501,7 @@ display:
       defaults:
         filters: false
         filter_groups: false
+        css_class: false
+      css_class: ls-events-listing
       display_extenders: {  }
       path: events

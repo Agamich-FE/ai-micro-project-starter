@@ -121,7 +121,13 @@ starts.
      `basic_html_format_editor`
    - build the content type, fields, displays, vocabulary, role, view
      and Pathauto pattern
-3. [ ] **Export and clean config.**
+3. [x] **Export and clean config.** Done 2026-11-19 (`a91afbc`), 17
+   files, reviewed by me. Left out: the role and its two
+   `system.action.user_*_role_action.event_editor` files (the user
+   module creates them with the role), and the Olivero block placement
+   (step 4 uses `placeBlockInDefaultTheme`). External dependencies:
+   `media.type.image` (from `image_media_type`) and the node teaser view
+   mode (from the node module).
    1. `ddev drush config:export` to a temp folder.
    2. Copy only the Events files into `recipes/ls_events/config/`.
    3. Strip `uuid`, `_core` and site-specific values.

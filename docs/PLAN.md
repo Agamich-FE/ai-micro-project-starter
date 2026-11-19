@@ -107,8 +107,9 @@ starts.
      storage (they come from core recipes now). Our `body` storage is
      identical to core's `page_content_type` file, so shipping it is safe.
    - `access toolbar` doesn't exist (standard uses Navigation). The role
-     has `access navigation` instead. **Step 4:** install `navigation` or
-     drop that permission, or `grantPermissions` fails on minimal.
+     has `access navigation` instead. *(Corrected in step 4: it doesn't
+     fail on minimal. Drupal drops the unknown permission and logs an
+     error; see step 4.)*
    - The view uses time-based caching (1 h) so "start date ≥ now" drops
      started events without a node save.
    - Exported events carry fixed aliases and anonymous authors. **Step
@@ -133,7 +134,29 @@ starts.
    3. Strip `uuid`, `_core` and site-specific values.
    4. Drop the role file (it is created by actions).
    5. **I review every YAML file kept.**
-4. [ ] **Write `recipe.yml`:**
+4. [x] **Write `recipe.yml`.** Done 2026-11-19. Differences from the
+   original list below:
+   - `ls_events_ui` is not in `install:` yet; it's added in step 6,
+     when the module exists.
+   - `install:` also lists `block`, `datetime` and `text`, which the
+     config depends on (minimal has `block`, but the recipe shouldn't
+     rely on it).
+   - Core recipes are referenced as `core/recipes/<name>`, the
+     documented form for recipes not in the same folder
+     (`RecipeConfigurator::getIncludedRecipe()`).
+   - `access navigation` is granted. On a site without Navigation,
+     `Role::calculateDependencies()` drops it and logs one error per
+     apply. My decision: accept the log rather than install Navigation
+     or leave editors without the sidebar on standard.
+   - The block goes to `olivero: sidebar`, `stark: sidebar_first`, else
+     `content`, at the last position.
+   - Config actions verified in core: `createIfNotExists`
+     (`EntityCreateDeriver`), `grantPermissions` (`Role::grantPermission`,
+     `#[ActionMethod]`, pluralised by `EntityMethodDeriver`),
+     `placeBlockInDefaultTheme` (`PlaceBlockDeriver`).
+   - Composer package name `custom/ls_events` is a placeholder.
+
+   Original list:
    - `recipes:` image_media_type, basic_html_format_editor
    - `install:` node, taxonomy, datetime_range, media_library, views,
      path, pathauto, ls_events_ui
@@ -142,7 +165,18 @@ starts.
    - `composer.json` with `"type": "drupal-recipe"`
 
    Run `ddev composer validate recipes/ls_events/composer.json`.
-5. [ ] **First apply check.** Fresh `site:install minimal`, apply, apply
+5. [x] **First apply check.** Done 2026-11-19 together with step 4
+   (CLAUDE.md: apply after every change). The prototype DB is kept as
+   the DDEV snapshot `prototype-after-step3`. Results:
+   - minimal: 2 applies, both OK; 11 permissions (`access navigation`
+     dropped, 1 logged error per apply, as expected); block in
+     `stark/sidebar_first`; `/events` 200
+   - standard: 2 applies, exit 0; `tags` and `content_editor` config
+     hashes identical before and after; 12 permissions; block in
+     `olivero/sidebar`; no errors logged; `/events` 200
+   - no import errors to log
+
+   Original text: Fresh `site:install minimal`, apply, apply
    again. Then the same with `standard`, which already has `tags` and
    `content_editor`. Fix and log every import error in AI_LOG.
 6. [ ] **Companion module `ls_events_ui`:**

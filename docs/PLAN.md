@@ -98,8 +98,25 @@ starts.
    `ddev composer require drupal/pathauto`,
    `ddev composer require --dev drupal/coder`, and
    `npm init` + `npm i -D @playwright/test`.
-2. [ ] **Hand-build the prototype** on the current standard site, via
-   the admin UI (by me or by the agent with drush):
+2. [x] **Hand-build the prototype** on the current standard site, via
+   the admin UI (by me or by the agent with drush). Done 2026-11-13 by
+   the agent with drush; re-checked 2026-11-19. It exists only in the
+   site database until step 3 exports it. Findings that change later
+   steps:
+   - The 11.4 `standard` install has no page/article types and no `body`
+     storage (they come from core recipes now). Our `body` storage is
+     identical to core's `page_content_type` file, so shipping it is safe.
+   - `access toolbar` doesn't exist (standard uses Navigation). The role
+     has `access navigation` instead. **Step 4:** install `navigation` or
+     drop that permission, or `grantPermissions` fails on minimal.
+   - The view uses time-based caching (1 h) so "start date ≥ now" drops
+     started events without a node save.
+   - Exported events carry fixed aliases and anonymous authors. **Step
+     7:** decide on both before exporting.
+   - The Pathauto pattern holds a generated UUID as a list key; that's
+     normal and not the top-level `uuid` step 3 strips.
+
+   Original sub-steps:
    - apply the core recipes `image_media_type` and
      `basic_html_format_editor`
    - build the content type, fields, displays, vocabulary, role, view

@@ -78,6 +78,28 @@ Approve, start step 1
 - Playwright 1.65 + `playwright.config.ts`, with a setup test that
   passes against the DDEV site
 
+### 2026-11-13 — build step 2 (prototype)
+
+**Prompt:**
+
+```
+Yes, start step 2
+```
+
+**Result:** The agent built the prototype on the standard site with
+`drush php:eval` scripts, each create guarded so it can rerun:
+- applied the core recipes `image_media_type` and `basic_html_format_editor`
+- `event` content type with five fields, the `event_category` vocabulary,
+  form, full and teaser displays
+- `event_editor` role, `ls_events` view (`/events` page + `next_3`
+  block in Olivero's sidebar), Pathauto pattern `/events/[node:title]`
+- checked with a test editor account and one past and one upcoming
+  event, then deleted them; tried `content:export` on one event
+
+Nothing was committed or recorded on 13 Nov. On 2026-11-19 a new session
+found the prototype in the database, re-checked it and recorded it here
+and in PLAN.md step 2 (with the findings that change steps 4 and 7).
+
 ## Recipe lifecycle in my own words
 
 When I run drush recipe, Drupal first reads recipe.yml and does a strict check. If the recipe ships a config file that already exists on the site with different values, it stops with an error before changing anything. With strict: false it skips that check.
@@ -103,6 +125,9 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 | 5 | Told me to "run `/export`" to save the transcript; I ran it in a separate terminal CLI session, which exported an empty conversation (header only) | The exported file had only the Claude Code banner | The agent used the desktop app's session export instead and rendered the JSONL to Markdown with `scripts/render-transcript.py` |
 | 6 | The agent's own plan put sample event dates "around 2026-11", with an optional past event | My plan review: the dates would expire within weeks and empty the upcoming list | Changed to 2027–2028 dates, none in the past (PLAN.md step 7) |
 | 7 | Nearly used the core `sdc` module for the Event card component | Checked `core/modules/sdc/sdc.info.yml`: `lifecycle: obsolete`, `hidden: true`; SDC is part of core since 10.3 | Plan step 6 says not to install `sdc` |
+| 8 | The plan assumed `standard` ships `body` storage and the `access toolbar` permission | Building the prototype: `body` storage missing, permission unknown | 11.4 standard gets page/article from core recipes and uses Navigation; PLAN.md step 2 notes, step 4 must handle `access navigation` on minimal |
+| 9 | First version of the view put site-specific role names (`content_editor`, `administrator`) in the category filter settings | Agent's own review of the view config | Removed them and re-imported the view |
+| 10 | In a new session the agent said step 2 had not started, because it read only git and the docs; the prototype was in the database, uncommitted | Starting step 2, it found `event`, `ls_events` etc. already on the site | Read the 13 Nov session transcript and the site log, re-checked the prototype instead of rebuilding it. Lesson: record DB-only work in the docs in the same session |
 
 ## Manual work
 

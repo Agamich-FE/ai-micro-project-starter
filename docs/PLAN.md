@@ -248,7 +248,21 @@ starts.
    - check that content isn't duplicated (`Existing::Skip`)
    - `grep -rE "^uuid:|_core:" recipes/ls_events/config` returns
      nothing
-9. [ ] **Recipe test script** `scripts/test-recipe.sh`. For each of
+9. [x] **Recipe test script.** Done 2026-11-19:
+   `scripts/test-recipe.sh [-y] [profile ...]` (asks before wiping the
+   site unless `-y`) + `scripts/recipe-assertions.php`, run with
+   `ddev drush php:script`. Beyond the list below it also checks: the
+   static uuid/`_core` grep and `composer validate`, 5 aliases managed
+   by Pathauto, image files on disk, 4 categories, block in the default
+   theme, `access navigation` only with Navigation, `ls_events_ui` and
+   its templates registered, `/events` 200 with event cards, and on
+   standard that `tags` and `content_editor` are unchanged.
+   Result: 84 checks pass on minimal + standard, exit 0.
+   **Broken on purpose:** added `administer nodes` to the role in
+   `recipe.yml` → exit 1, stopped at `not ok - event_editor does NOT
+   have "administer nodes"` after 30 passes; reverted with git.
+
+   Original text: **Recipe test script** `scripts/test-recipe.sh`. For each of
    `minimal` and `standard`:
    1. `site:install`
    2. apply the recipe, then **apply it again** (each must exit 0)

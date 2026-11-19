@@ -133,6 +133,7 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 | 13 | First CSS draft switched the accent colour on `prefers-color-scheme: dark` | Own review: Olivero and Stark stay light in OS dark mode | The light-blue accent would fail contrast on white; removed the dark-mode block |
 | 14 | Set a teaser label to `visually_hidden` before confirming the option exists | First grep found nothing | Found it in `FieldLabelOptionsTrait.php:21`, kept the change |
 | 15 | Tested the category filter with `?field_event_category_target_id=` and nearly reported it as broken | The list didn't narrow | Read the view: the exposed identifier is `category`; with it the filter works |
+| 16 | First run of the break test reported `exit=` (empty): used bash's `PIPESTATUS` in a zsh shell | The empty exit code | Reran without a pipe; real exit code 1 |
 
 ## Manual work
 
@@ -154,5 +155,9 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
   - re-apply experiment (RESEARCH.md §4)
   - Playwright setup test passes against https://ls-events.ddev.site
   - `phpcs -i` lists the Drupal and DrupalPractice standards
-- Test I deliberately broke to prove it works: <…>
+- Test I deliberately broke to prove it works: added `administer nodes`
+  to the Event editor role in `recipe.yml`; `scripts/test-recipe.sh -y
+  minimal` exited 1 at `not ok - event_editor does NOT have "administer
+  nodes"`; reverted with git, full run back to 84 ok, exit 0
+  (2026-11-19)
 - Diffs I reviewed carefully: <…>

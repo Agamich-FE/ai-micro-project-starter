@@ -39,7 +39,9 @@
   (path is relative to the docroot `web/`)
 - Clear cache: `ddev drush cr`
 - Export config from the prototype: `ddev drush config:export -y`
-- Run recipe test: `scripts/test-recipe.sh` (added in plan step 9)
+- Run recipe test: `scripts/test-recipe.sh` (minimal + standard; add
+  `-y` to skip the prompt, or name profiles, e.g. `scripts/test-recipe.sh
+  -y minimal`). It reinstalls the DDEV site, so it wipes the database.
 - Run Playwright smoke tests (on the host, not in DDEV):
   `npm run test:e2e`. First time: `npm ci && npm run test:e2e:install`.
   Other site: `BASE_URL=https://… npm run test:e2e`.

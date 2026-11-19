@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event category'
+vid: event_category
+description: 'Categories used to group and filter events.'
+weight: 0
+new_revision: false

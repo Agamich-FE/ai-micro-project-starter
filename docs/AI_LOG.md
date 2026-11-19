@@ -7,7 +7,8 @@
 
 | Tool | Mode / model | Used for |
 | --- | --- | --- |
-| Claude Code (desktop app) | agent, Opus 5.5 | setup, research spike, ADR and plan drafts, dependencies, transcript export |
+| Claude Code (desktop app) | agent, Opus 5.5 | setup, research spike, ADR and plan drafts, dependencies, transcript export; build steps 2–12 (prototype, recipe, module, content, tests, lint, docs) |
+| Playwright (via the agent) | Chromium, headless | smoke tests and the screenshots used for the visual check (step 10) |
 | Claude Code (terminal CLI) | Sonnet 4.6 | only an accidental, empty `/export` |
 
 ## Key prompts
@@ -100,6 +101,26 @@ Nothing was committed or recorded on 13 Nov. On 2026-11-19 a new session
 found the prototype in the database, re-checked it and recorded it here
 and in PLAN.md step 2 (with the findings that change steps 4 and 7).
 
+### 2026-11-19 — build steps 3–12
+
+Each step started with a one-line prompt (`Start step 3` … `Start step
+12`), and each ended with `Commit` after I read the agent's summary. In
+step 3 I reviewed the 17 YAML files before answering `Reviewed, commit`.
+In step 4 the agent asked me one question: whether to grant `access
+navigation` (I chose: grant it, accept the log on minimal).
+
+**Result per step** (details in PLAN.md):
+- 3: 17 config files exported and cleaned
+- 4–5: `recipe.yml` + `composer.json`; applies twice on minimal and
+  standard
+- 6: `ls_events_ui` module (SDC event card, teaser/full templates)
+- 7–8: 5 sample events as default content; re-apply robustness
+- 9: `scripts/test-recipe.sh`, 84 checks, proven by breaking the role
+- 10: Playwright tests, 4/4 on Olivero and Stark, proven by flipping the
+  sort; screenshots led to 3 fixes
+- 11: PHPCS clean, now also on `scripts/`
+- 12: README (55 s on a fresh clone), template cleanup, transcripts
+
 ## Recipe lifecycle in my own words
 
 When I run drush recipe, Drupal first reads recipe.yml and does a strict check. If the recipe ships a config file that already exists on the site with different values, it stops with an error before changing anything. With strict: false it skips that check.
@@ -148,7 +169,12 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 
 - Rules file changes and why: CLAUDE.md filled with the stack, commands
   and recipe rules after setup. Pitfalls are added as they are found.
-- When I started a fresh session or reset context, and why: <…>
+- When I started a fresh session or reset context, and why: a new
+  session on 2026-11-13 (asked for the project history, then step 2) and
+  another on 2026-11-16/19 (asked for the last sessions and the next
+  step). The second session first missed the 13 Nov work because it was
+  only in the database (row 10); since then every step is recorded in
+  PLAN.md and committed before the next one starts.
 
 ## Verification
 

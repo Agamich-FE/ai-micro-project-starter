@@ -313,7 +313,23 @@ starts.
     added: that would be a new dependency).
 
     Original text: **Lint:** PHPCS (Drupal, DrupalPractice) on the module, clean.
-12. [ ] **Docs:**
+12. [ ] **Docs.** Agent part done 2026-11-19; open until I write the
+    retro:
+    - README written; its install steps took **55 s** on a fresh clone
+      (separate DDEV project `ls-events-clone`, deleted afterwards; warm
+      DDEV image and Composer caches), ending with `/events` 200 and 8
+      event cards
+    - `HOW_TO_USE_THIS_TEMPLATE.md` removed; `.env.example`,
+      `scripts/README.md`, `transcripts/README.md` rewritten for this
+      project
+    - transcripts for 13 Nov and 16/19 Nov exported, rendered, secrets
+      redacted (local admin passwords, a login link, a form token)
+    - AI log: tools, step 3–12 prompts, context management filled in
+    - RETRO: time-log rows from 13 Nov on drafted from timestamps
+    - **Left for me:** RETRO reflection sections, AI log "Diffs I
+      reviewed carefully", checking the drafted hours
+
+    Original text: **Docs:**
     - README install/run in under 5 minutes, timed on a fresh clone
     - AI_LOG
     - RETRO

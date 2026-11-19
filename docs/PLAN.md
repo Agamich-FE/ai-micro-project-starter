@@ -213,14 +213,37 @@ starts.
    - Cache metadata stays on the node render array.
    - Accessible markup: `<article>`, heading level, `<time datetime>`,
      image alt from media.
-7. [ ] **Default content:**
+7. [x] **Default content.** Done 2026-11-19:
+   - 5 events (2027-03 to 2028-05), 4 categories (Conference,
+     Workshop, Meetup, Webinar), 5 generated JPEG banners with alt text;
+     20 entities + 5 images, 196 KB
+   - `--dir=../recipes/ls_events/content` is relative to `web/` and
+     lands in `recipes/ls_events/content/` (CLAUDE.md open point closed)
+   - **Author:** all entities owned by user 1. The exporter writes users
+     0 and 1 as plain IDs and never exports them (`Exporter::exportReference`),
+     so no account or password hash ends up in the repo. Any other owner
+     would be exported *with its hashed password*.
+   - **Aliases:** the exporter writes the alias but not Pathauto's flag,
+     so the alias would be saved as manual. Removed the `path` block from
+     the 5 node files; Pathauto generates all aliases on import
+     (checked: 5 of 5 Pathauto-managed)
+
+   Original text:
    1. Create 5 events with dates in 2027–2028 (none in the past, so the
       upcoming list and the Playwright test keep working), 3–4
       categories and 5 images.
    2. Export them with `drush content:export node --bundle=event -W`
       into `recipes/ls_events/content/`, with file attachments.
    3. Check the `--dir` path base on the first run.
-8. [ ] **Re-apply and robustness check:**
+8. [x] **Re-apply and robustness check.** Done 2026-11-19 with step 7:
+   minimal and standard, applied twice each, all exit 0; after the
+   second apply still 5 events, 5 media, 4 terms, 5 files (none
+   missing); `/events` lists them oldest first, the block shows the
+   first 3, `?category=<tid>` narrows (Conference 2, Webinar 1; the
+   exposed identifier is `category`); config grep for `uuid`/`_core`
+   0 hits. Step 9 turns this into a script.
+
+   Original text:
    - apply twice on minimal and on standard
    - check that content isn't duplicated (`Existing::Skip`)
    - `grep -rE "^uuid:|_core:" recipes/ls_events/config` returns

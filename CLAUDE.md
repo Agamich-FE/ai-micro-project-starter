@@ -103,6 +103,9 @@
 - Recipes can't contain code: PHP, Twig and SDC files go in the companion
   module, installed via `install:`.
 - Export content with `ddev drush content:export node --bundle=event -W
-  --dir=../recipes/ls_events/content` (core exporter, 11.3+; not tried
-  yet, so check where the relative `--dir` path ends up). Don't add
-  the contrib `default_content` module.
+  --dir=../recipes/ls_events/content` (core exporter, 11.3+; `--dir` is
+  relative to `web/`). Don't add the contrib `default_content` module.
+  Keep every exported entity owned by user 1: any other owner is
+  exported *with its password hash*. Remove the `path` block from
+  exported nodes so Pathauto generates aliases (the exporter drops its
+  flag).

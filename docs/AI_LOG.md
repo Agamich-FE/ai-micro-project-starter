@@ -132,6 +132,7 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 | 12 | Plan step 6 said `hook_theme` suggestions only "if templates aren't picked up automatically" | Checked how core modules ship node/media suggestion templates | Module templates are only found when registered; added `#[Hook('theme')]` with `base hook` |
 | 13 | First CSS draft switched the accent colour on `prefers-color-scheme: dark` | Own review: Olivero and Stark stay light in OS dark mode | The light-blue accent would fail contrast on white; removed the dark-mode block |
 | 14 | Set a teaser label to `visually_hidden` before confirming the option exists | First grep found nothing | Found it in `FieldLabelOptionsTrait.php:21`, kept the change |
+| 15 | Tested the category filter with `?field_event_category_target_id=` and nearly reported it as broken | The list didn't narrow | Read the view: the exposed identifier is `category`; with it the filter works |
 
 ## Manual work
 

@@ -276,7 +276,29 @@ starts.
 
    It exits non-zero on the first failure. Prove it by breaking one
    assertion on purpose.
-10. [ ] **Playwright smoke test** `tests/e2e/events.spec.ts` against
+10. [x] **Playwright smoke test.** Done 2026-11-19:
+    `tests/e2e/events.spec.ts` (4 tests; replaces the step 1
+    `setup.spec.ts`): listing cards with title link, `<time datetime>`
+    and soonest-first order; Category filter (select "Webinar", Apply)
+    narrows the list; the "Next 3" block shows 3 cards; an alias opens
+    the full page with one h1, image alt and location. Screenshots of
+    both pages go to `test-results/`.
+    - 4/4 pass on standard/Olivero and on minimal/Stark (after
+      `scripts/test-recipe.sh -y <profile>`)
+    - **Broken on purpose:** sort flipped to DESC with `drush
+      config:set` → exit 1, only the order test failed; restored to ASC
+    - Fixes found by the tests and screenshots:
+      - selectors first used Olivero's `view-display-id-*` classes,
+        which Stark doesn't print → the view now sets its own
+        `css_class` (`ls-events-listing`, `ls-events-next`), which Views
+        adds in every theme
+      - full page: the category pill wrapped the inline label → Category
+        label is `visually_hidden` on the full display too
+      - sidebar block: full body text made it very long → container
+        query hides the teaser body below 22rem card width
+    - step 6 visual check done via the screenshots (Olivero and Stark)
+
+    Original text: **Playwright smoke test** `tests/e2e/events.spec.ts` against
     `https://ls-events.ddev.site`:
     - `/events` shows ≥ 1 event card with a title, date and link
     - the category filter narrows the results

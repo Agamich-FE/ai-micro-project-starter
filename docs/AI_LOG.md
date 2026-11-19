@@ -134,6 +134,8 @@ I checked this order in RecipeRunner::processRecipe() and ConfigConfigurator.php
 | 14 | Set a teaser label to `visually_hidden` before confirming the option exists | First grep found nothing | Found it in `FieldLabelOptionsTrait.php:21`, kept the change |
 | 15 | Tested the category filter with `?field_event_category_target_id=` and nearly reported it as broken | The list didn't narrow | Read the view: the exposed identifier is `category`; with it the filter works |
 | 16 | First run of the break test reported `exit=` (empty): used bash's `PIPESTATUS` in a zsh shell | The empty exit code | Reran without a pipe; real exit code 1 |
+| 17 | Wrote the Playwright selectors on `.view-display-id-page` and claimed in the file comment that they avoid theme markup; that class comes from Olivero's template | 3 of 4 tests failed on minimal/Stark although the recipe test passed | Gave the view displays their own `css_class` (added by Views' preprocess in every theme) and pointed the tests at it; 4/4 on both themes |
+| 18 | Step 6 shipped without a visual check; the category pill wrapped the inline label, and sidebar cards showed the full body | Playwright screenshots in step 10 | Category label `visually_hidden` on the full display; CSS container query hides the teaser body in narrow cards |
 
 ## Manual work
 

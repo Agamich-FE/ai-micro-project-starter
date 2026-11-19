@@ -17,8 +17,8 @@ install:
   - taxonomy
   - text
   - views
-  # ls_events_ui (Event card component and templates) is added in plan
-  # step 6, once the module exists.
+  # Companion module: Event card component and teaser/full templates.
+  - ls_events_ui
 config:
   # Only our own field storages are checked strictly: they define database
   # tables. Every other shipped file is skipped if it already exists.
